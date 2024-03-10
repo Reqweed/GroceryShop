@@ -1,0 +1,43 @@
+using GroceryShop.DAL.Contexts;
+using GroceryShop.DAL.Entities.Models;
+using GroceryShop.DAL.Interfaces;
+using Microsoft.EntityFrameworkCore;
+
+namespace GroceryShop.DAL.Repositories;
+
+public class ProductRepository :  IProductRepository
+{
+    private readonly PostgresDbContext _postgresDbContext;
+
+    public ProductRepository(PostgresDbContext postgresDbContext)
+        => _postgresDbContext = postgresDbContext;
+
+    public IQueryable<Product> GetAll()
+        => _postgresDbContext.Products;
+
+    public Task<Product?> Get(Guid idProduct, CancellationToken cancellationToken)
+        => _postgresDbContext.Products
+            .Where(product => product.Id == idProduct)
+            .FirstOrDefaultAsync(cancellationToken);
+
+    public Task<Product?> Get(string nameProduct, CancellationToken cancellationToken)
+        => _postgresDbContext.Products
+            .Where(product => product.Name == nameProduct)
+            .FirstOrDefaultAsync(cancellationToken);
+
+    public Task<Product?> GetWithCategoryAndSupplier(Guid idProduct, CancellationToken cancellationToken)
+        => _postgresDbContext.Products
+            .Where(product => product.Id == idProduct)
+            .Include(product => product.Category)
+            .Include(product => product.Supplier)
+            .FirstOrDefaultAsync(cancellationToken);
+
+    public void Create(Product product)
+        => _postgresDbContext.Products.Add(product);
+
+    public void Delete(Product product)
+        => _postgresDbContext.Products.Remove(product);
+    
+    public void Update(Product product)
+        => _postgresDbContext.Products.Update(product);
+}
