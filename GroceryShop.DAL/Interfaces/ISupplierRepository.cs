@@ -5,8 +5,8 @@ namespace GroceryShop.DAL.Interfaces;
 public interface ISupplierRepository
 {
     IQueryable<Supplier> GetAll();
-    Task<Supplier?> Get(Guid idSupplier, CancellationToken cancellationToken);
-    Task<Supplier?> Get(string nameSupplier, CancellationToken cancellationToken);
+    Task<Supplier?> GetAsync(Guid idSupplier, CancellationToken cancellationToken = default);
+    Task<Supplier?> GetAsync(string nameSupplier, CancellationToken cancellationToken = default);
     void Create(Supplier supplier);
     void Delete(Supplier supplier);
     void Update(Supplier supplier);

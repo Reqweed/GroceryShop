@@ -15,12 +15,12 @@ public class OrderRepository : IOrderRepository
     public IQueryable<Order> GetAll()
         => _postgresDbContext.Orders;
 
-    public Task<Order?> Get(Guid idOrder, CancellationToken cancellationToken)
+    public Task<Order?> GetAsync(Guid idOrder, CancellationToken cancellationToken = default)
         => _postgresDbContext.Orders
             .Where(order => order.Id == idOrder)
             .FirstOrDefaultAsync(cancellationToken);
 
-    public Task<Order?> GetWithOrderItem(Guid idOrder, CancellationToken cancellationToken)
+    public Task<Order?> GetWithOrderItemAsync(Guid idOrder, CancellationToken cancellationToken = default)
         => _postgresDbContext.Orders
             .Where(order => order.Id == idOrder)
             .Include(order => order.OrderItems)

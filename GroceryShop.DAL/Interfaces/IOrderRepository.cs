@@ -5,8 +5,8 @@ namespace GroceryShop.DAL.Interfaces;
 public interface IOrderRepository
 {
     IQueryable<Order> GetAll();
-    Task<Order?> Get(Guid idOrder, CancellationToken cancellationToken);
-    Task<Order?> GetWithOrderItem(Guid idOrder, CancellationToken cancellationToken);
+    Task<Order?> GetAsync(Guid idOrder, CancellationToken cancellationToken = default);
+    Task<Order?> GetWithOrderItemAsync(Guid idOrder, CancellationToken cancellationToken = default);
     void Create(Order order);
     void Delete(Order order);
     void Update(Order order);

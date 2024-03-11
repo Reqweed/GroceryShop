@@ -15,12 +15,12 @@ public class CategoryRepository : ICategoryRepository
     public IQueryable<Category> GetAll()
         => _postgresDbContext.Categories;
 
-    public async Task<Category?> Get(Guid idCategory, CancellationToken cancellationToken)
+    public async Task<Category?> GetAsync(Guid idCategory, CancellationToken cancellationToken = default)
         => await _postgresDbContext.Categories
             .Where(category => category.Id == idCategory)
             .FirstOrDefaultAsync(cancellationToken);
 
-    public async Task<Category?> Get(string nameCategory, CancellationToken cancellationToken)
+    public async Task<Category?> GetAsync(string nameCategory, CancellationToken cancellationToken = default)
         => await _postgresDbContext.Categories
             .Where(category => category.Name == nameCategory)
             .FirstOrDefaultAsync(cancellationToken);
