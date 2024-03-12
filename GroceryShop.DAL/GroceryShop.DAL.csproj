@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Entities\DataTransferObjects\" />
       <Folder Include="Entities\ErrorModels\" />
       <Folder Include="Entities\Exceptions\" />
     </ItemGroup>
