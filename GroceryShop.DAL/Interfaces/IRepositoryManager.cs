@@ -6,5 +6,6 @@ public interface IRepositoryManager
     IProductRepository Product { get; }
     ICategoryRepository Category { get; }
     ISupplierRepository Supplier { get; }
+    ICartRepository Cart { get; }
     void Save();
 }

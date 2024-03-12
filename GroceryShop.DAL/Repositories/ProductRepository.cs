@@ -17,13 +17,11 @@ public class ProductRepository :  IProductRepository
 
     public Task<Product?> GetAsync(Guid idProduct, CancellationToken cancellationToken = default)
         => _postgresDbContext.Products
-            .Where(product => product.Id == idProduct)
-            .FirstOrDefaultAsync(cancellationToken);
+            .FirstOrDefaultAsync(product => product.Id == idProduct, cancellationToken);
 
     public Task<Product?> GetAsync(string nameProduct, CancellationToken cancellationToken = default)
         => _postgresDbContext.Products
-            .Where(product => product.Name == nameProduct)
-            .FirstOrDefaultAsync(cancellationToken);
+            .FirstOrDefaultAsync(product => product.Name == nameProduct, cancellationToken);
 
     public Task<Product?> GetWithCategoryAndSupplierAsync(Guid idProduct, CancellationToken cancellationToken = default)
         => _postgresDbContext.Products
