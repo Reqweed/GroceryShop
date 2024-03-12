@@ -13,15 +13,5 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
         builder.Property(p => p.StockQuantity).IsRequired();
         builder.Property(p => p.Price).IsRequired().HasPrecision(18, 2);
         builder.Property(p => p.Description).IsRequired(false).HasMaxLength(500);
-        
-        builder.HasOne(p => p.Supplier)
-            .WithMany(s => s.Products)
-            .HasForeignKey(p => p.SupplierId)
-            .OnDelete(DeleteBehavior.SetNull); 
-
-        builder.HasOne(p => p.Category)
-            .WithMany(c => c.Products)
-            .HasForeignKey(p => p.CategoryId)
-            .OnDelete(DeleteBehavior.SetNull);
     }
 }
