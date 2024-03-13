@@ -19,10 +19,6 @@ public class ProductRepository :  IProductRepository
         => _postgresDbContext.Products
             .FirstOrDefaultAsync(product => product.Id == idProduct, cancellationToken);
 
-    public Task<Product?> GetAsync(string nameProduct, CancellationToken cancellationToken = default)
-        => _postgresDbContext.Products
-            .FirstOrDefaultAsync(product => product.Name == nameProduct, cancellationToken);
-
     public Task<Product?> GetWithCategoryAndSupplierAsync(Guid idProduct, CancellationToken cancellationToken = default)
         => _postgresDbContext.Products
             .Where(product => product.Id == idProduct)

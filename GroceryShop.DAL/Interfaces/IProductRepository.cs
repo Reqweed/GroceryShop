@@ -7,7 +7,6 @@ public interface IProductRepository
     IQueryable<Product> GetAll();
     Task<Product?> GetAsync(Guid idProduct, CancellationToken cancellationToken = default);
     Task<Product?> GetWithCategoryAndSupplierAsync(Guid idProduct, CancellationToken cancellationToken = default);
-    Task<Product?> GetAsync(string nameProduct, CancellationToken cancellationToken = default);
     void Create(Product product);
     void Delete(Product product);
     void Update(Product product);

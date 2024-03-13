@@ -151,7 +151,7 @@ public static class DataInitializer
         IdentityUserRoles = new List<IdentityUserRole<Guid>>
         {
             new() { UserId = Users.ElementAt(0).Id, RoleId = Roles.ElementAt(0).Id },
-            new() { UserId = Users.ElementAt(1).Id, RoleId = Roles.ElementAt(0).Id }
+            new() { UserId = Users.ElementAt(1).Id, RoleId = Roles.ElementAt(1).Id }
         };
     }
 }

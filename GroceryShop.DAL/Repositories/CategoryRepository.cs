@@ -20,11 +20,6 @@ public class CategoryRepository : ICategoryRepository
             .Where(category => category.Id == idCategory)
             .FirstOrDefaultAsync(cancellationToken);
 
-    public async Task<Category?> GetAsync(string nameCategory, CancellationToken cancellationToken = default)
-        => await _postgresDbContext.Categories
-            .Where(category => category.Name == nameCategory)
-            .FirstOrDefaultAsync(cancellationToken);
-
     public void Create(Category category)
         => _postgresDbContext.Categories.Add(category);
 

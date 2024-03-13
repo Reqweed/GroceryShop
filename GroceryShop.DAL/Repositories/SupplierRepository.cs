@@ -20,11 +20,6 @@ public class SupplierRepository : ISupplierRepository
             .Where(supplier => supplier.Id == idSupplier)
             .FirstOrDefaultAsync(cancellationToken);
 
-    public async Task<Supplier?> GetAsync(string nameSupplier, CancellationToken cancellationToken = default)
-        => await _postgresDbContext.Suppliers
-            .Where(supplier => supplier.Name == nameSupplier)
-            .FirstOrDefaultAsync(cancellationToken);
-
     public void Create(Supplier supplier)
         => _postgresDbContext.Suppliers.Add(supplier);
 
