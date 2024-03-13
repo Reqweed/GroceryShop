@@ -26,8 +26,7 @@ public class PostgresDbContext : IdentityDbContext<User, Role, Guid>
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql(_configuration.GetSection("PostgresSql:ConnectionString").Value,
-            b => b.MigrationsAssembly("GroceryShop.API"));
+        optionsBuilder.UseNpgsql(_configuration.GetSection("PostgresSql:ConnectionString").Value);
     }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
