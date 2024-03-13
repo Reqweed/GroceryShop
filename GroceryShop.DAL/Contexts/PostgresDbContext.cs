@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace GroceryShop.DAL.Contexts;
 
-public class PostgresDbContext : IdentityDbContext<User, Role, Guid>
+public sealed class PostgresDbContext : IdentityDbContext<User, Role, Guid>
 {
     private readonly IConfiguration _configuration;
 
@@ -22,6 +22,7 @@ public class PostgresDbContext : IdentityDbContext<User, Role, Guid>
     public PostgresDbContext(IConfiguration configuration)
     {
         _configuration = configuration;
+        Database.Migrate();
     }
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
