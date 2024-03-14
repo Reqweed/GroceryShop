@@ -1,11 +1,11 @@
 using AutoMapper;
-using GroceryShop.BLL.Entity.DataTransferObjects.CategoryDto;
-using GroceryShop.BLL.Entity.DataTransferObjects.OrderDto;
-using GroceryShop.BLL.Entity.DataTransferObjects.OrderItemDto;
-using GroceryShop.BLL.Entity.DataTransferObjects.ProductDto;
-using GroceryShop.BLL.Entity.DataTransferObjects.RoleDto;
-using GroceryShop.BLL.Entity.DataTransferObjects.SupplierDto;
-using GroceryShop.BLL.Entity.DataTransferObjects.UserDto;
+using GroceryShop.BLL.Entities.DataTransferObjects.CategoryDto;
+using GroceryShop.BLL.Entities.DataTransferObjects.OrderDto;
+using GroceryShop.BLL.Entities.DataTransferObjects.OrderItemDto;
+using GroceryShop.BLL.Entities.DataTransferObjects.ProductDto;
+using GroceryShop.BLL.Entities.DataTransferObjects.RoleDto;
+using GroceryShop.BLL.Entities.DataTransferObjects.SupplierDto;
+using GroceryShop.BLL.Entities.DataTransferObjects.UserDto;
 using GroceryShop.DAL.Entities.Models;
 
 namespace GroceryShop.BLL.MappingProfiles;

@@ -1,5 +1,5 @@
-using GroceryShop.BLL.Entity.DataTransferObjects.ParametersDto;
-using GroceryShop.BLL.Entity.DataTransferObjects.ProductDto;
+using GroceryShop.BLL.Entities.DataTransferObjects.ParametersDto;
+using GroceryShop.BLL.Entities.DataTransferObjects.ProductDto;
 
 namespace GroceryShop.BLL.Interfaces;
 

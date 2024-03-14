@@ -1,4 +1,4 @@
-using GroceryShop.BLL.Entity.DataTransferObjects.RoleDto;
+using GroceryShop.BLL.Entities.DataTransferObjects.RoleDto;
 
 namespace GroceryShop.BLL.Auth.Interfaces;
 

@@ -1,5 +1,5 @@
 using AutoMapper;
-using GroceryShop.BLL.Entity.DataTransferObjects.CategoryDto;
+using GroceryShop.BLL.Entities.DataTransferObjects.CategoryDto;
 using GroceryShop.BLL.Interfaces;
 using GroceryShop.DAL.Entities.Exceptions.BadRequestException;
 using GroceryShop.DAL.Entities.Exceptions.NotFoundException;

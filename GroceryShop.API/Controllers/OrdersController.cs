@@ -1,4 +1,4 @@
-using GroceryShop.BLL.Entity.DataTransferObjects.OrderDto;
+using GroceryShop.BLL.Entities.DataTransferObjects.OrderDto;
 using GroceryShop.BLL.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

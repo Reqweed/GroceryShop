@@ -1,5 +1,5 @@
-using GroceryShop.BLL.Entity.DataTransferObjects.AuthenticationDto;
-using GroceryShop.BLL.Entity.DataTransferObjects.UserDto;
+using GroceryShop.BLL.Entities.DataTransferObjects.AuthenticationDto;
+using GroceryShop.BLL.Entities.DataTransferObjects.UserDto;
 
 namespace GroceryShop.BLL.Auth.Interfaces;
 

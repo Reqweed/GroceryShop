@@ -1,4 +1,4 @@
-using GroceryShop.BLL.Entity.DataTransferObjects.OrderDto;
+using GroceryShop.BLL.Entities.DataTransferObjects.OrderDto;
 
 namespace GroceryShop.BLL.Interfaces;
 
