@@ -28,7 +28,7 @@ public class ProductService : IProductService
             throw new NullDtoBadRequestException();
         
         var products =  _repositoryManager.Product.GetAll()
-                           .Where(product => product.Name.Contains(parameters.Name))
+                           .Where(product => product.Name.ToLower().Contains(parameters.Name.ToLower()))
                            .OrderBy(product => product.Name)
                            .Skip((parameters.PageInfo.PageNumber - 1) * parameters.PageInfo.PageSize)
                            .Take(parameters.PageInfo.PageSize);
