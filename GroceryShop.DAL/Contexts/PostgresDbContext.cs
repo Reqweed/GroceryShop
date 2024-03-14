@@ -22,19 +22,18 @@ public sealed class PostgresDbContext : IdentityDbContext<User, Role, Guid>
     public PostgresDbContext(IConfiguration configuration)
     {
         _configuration = configuration;
-        if(Database.EnsureCreated()) 
-            Database.Migrate();
+        Database.Migrate();
     }
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql(_configuration.GetSection("PostgresSql:ConnectionStringForLocal").Value);
+        optionsBuilder.UseNpgsql(_configuration.GetSection("PostgresSql:ConnectionString").Value);
     }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-
+        
         modelBuilder.ApplyConfiguration(new CategoryConfiguration());
         modelBuilder.ApplyConfiguration(new SupplierConfiguration());
         modelBuilder.ApplyConfiguration(new ProductConfiguration());

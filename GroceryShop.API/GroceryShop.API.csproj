@@ -20,8 +20,4 @@
       <ProjectReference Include="..\GroceryShop.BLL\GroceryShop.BLL.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Logs\" />
-    </ItemGroup>
-
 </Project>
