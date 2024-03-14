@@ -13,5 +13,4 @@ public record ProductDto
     public string Description { get; init; }
     public Guid SupplierId { get; init; }
     public Guid CategoryId { get; init; }
-    public PageInfo.PageInfo PageInfo { get; set; }
 }
