@@ -1,0 +1,31 @@
+version: '3.9'
+
+services:
+  
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: docker-backend
+    ports:
+      - "8080:80"
+    volumes:
+      - ".:/backend"
+      - "/tmp:/tmp"
+    depends_on:
+      - database
+      
+  database:
+    image: postgres:latest
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    container_name: docker-database
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=root
+        
+volumes:
+  pgdata:

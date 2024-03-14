@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroceryShop.API", "GroceryShop.API\GroceryShop.API.csproj", "{288AB52C-239A-4045-9D2E-D62AF1B3B30B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroceryShop.BLL", "GroceryShop.BLL\GroceryShop.BLL.csproj", "{50D8B60E-8080-4565-B3B4-838B431C34EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroceryShop.DAL", "GroceryShop.DAL\GroceryShop.DAL.csproj", "{7622BB21-FBDC-4E92-AE7C-F2D1BB4CDB10}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{288AB52C-239A-4045-9D2E-D62AF1B3B30B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{288AB52C-239A-4045-9D2E-D62AF1B3B30B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{288AB52C-239A-4045-9D2E-D62AF1B3B30B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{288AB52C-239A-4045-9D2E-D62AF1B3B30B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50D8B60E-8080-4565-B3B4-838B431C34EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50D8B60E-8080-4565-B3B4-838B431C34EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50D8B60E-8080-4565-B3B4-838B431C34EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50D8B60E-8080-4565-B3B4-838B431C34EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7622BB21-FBDC-4E92-AE7C-F2D1BB4CDB10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7622BB21-FBDC-4E92-AE7C-F2D1BB4CDB10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7622BB21-FBDC-4E92-AE7C-F2D1BB4CDB10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7622BB21-FBDC-4E92-AE7C-F2D1BB4CDB10}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
