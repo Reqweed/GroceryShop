@@ -1,8 +1,7 @@
+using GroceryShop.BLL.Entity.DataTransferObjects.ParametersDto;
+using GroceryShop.BLL.Entity.DataTransferObjects.ProductDto;
 using GroceryShop.BLL.Interfaces;
-using GroceryShop.DAL.Entities.DataTransferObjects.ProductDto;
-using GroceryShop.DAL.Entities.Exceptions.NotFoundException;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GroceryShop.API.Controllers;
@@ -13,10 +12,10 @@ public class ProductsController : BaseController
     public ProductsController(IServiceManager serviceManager) : base(serviceManager) { }
     
     [AllowAnonymous]
-    [HttpGet]
-    public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
+    [HttpPost("catalog")]
+    public async Task<IActionResult> GetAll([FromBody] GetAllParametersDto parameters, CancellationToken cancellationToken)
     {
-        var products = await ServiceManager.Product.GetAllAsync(cancellationToken);
+        var products = await ServiceManager.Product.GetAllAsync(parameters, cancellationToken);
     
         return Ok(products);
     }

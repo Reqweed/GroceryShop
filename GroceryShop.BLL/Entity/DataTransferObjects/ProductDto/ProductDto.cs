@@ -1,6 +1,6 @@
 using GroceryShop.DAL.Entities.Models;
 
-namespace GroceryShop.DAL.Entities.DataTransferObjects.ProductDto;
+namespace GroceryShop.BLL.Entity.DataTransferObjects.ProductDto;
 
 public record ProductDto
 {
@@ -13,4 +13,5 @@ public record ProductDto
     public string Description { get; init; }
     public Guid SupplierId { get; init; }
     public Guid CategoryId { get; init; }
+    public PageInfo.PageInfo PageInfo { get; set; }
 }
