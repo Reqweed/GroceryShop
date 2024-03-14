@@ -1,6 +1,7 @@
 using AutoMapper;
+using GroceryShop.BLL.Entity.DataTransferObjects.ParametersDto;
+using GroceryShop.BLL.Entity.DataTransferObjects.ProductDto;
 using GroceryShop.BLL.Interfaces;
-using GroceryShop.DAL.Entities.DataTransferObjects.ProductDto;
 using GroceryShop.DAL.Entities.Exceptions.BadRequestException;
 using GroceryShop.DAL.Entities.Exceptions.NotFoundException;
 using GroceryShop.DAL.Entities.Models;
@@ -20,9 +21,16 @@ public class ProductService : IProductService
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<ProductDto>> GetAllAsync(CancellationToken cancellationToken)
+    public async Task<IEnumerable<ProductDto>> GetAllAsync(GetAllParametersDto parameters, CancellationToken cancellationToken)
     {
-        var products = await _repositoryManager.Product.GetAll().ToListAsync(cancellationToken)
+        if (parameters is null)
+            throw new NullDtoBadRequestException();
+        
+        var products = await _repositoryManager.Product.GetAll()
+                           .Where(product => product.Name.Contains(parameters.Name))
+                           .Skip((parameters.PageInfo.PageNumber - 1) * parameters.PageInfo.PageSize)
+                           .Take(parameters.PageInfo.PageSize)
+                           .ToListAsync(cancellationToken)
                        ?? throw new ProductNotFoundException();
 
         var productsDto = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductDto>>(products);

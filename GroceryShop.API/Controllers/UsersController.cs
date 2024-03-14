@@ -1,5 +1,5 @@
+using GroceryShop.BLL.Entity.DataTransferObjects.UserDto;
 using GroceryShop.BLL.Interfaces;
-using GroceryShop.DAL.Entities.DataTransferObjects.UserDto;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
