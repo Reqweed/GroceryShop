@@ -1,6 +1,7 @@
 using AutoMapper;
 using GroceryShop.BLL.Entities.DataTransferObjects.ParametersDto;
 using GroceryShop.BLL.Entities.DataTransferObjects.ProductDto;
+using GroceryShop.BLL.Entities.Enums;
 using GroceryShop.BLL.Interfaces;
 using GroceryShop.DAL.Entities.Exceptions.BadRequestException;
 using GroceryShop.DAL.Entities.Exceptions.NotFoundException;
@@ -26,12 +27,19 @@ public class ProductService : IProductService
         if (parameters is null)
             throw new NullDtoBadRequestException();
         
-        var products = await _repositoryManager.Product.GetAll()
+        var products =  _repositoryManager.Product.GetAll()
                            .Where(product => product.Name.Contains(parameters.Name))
+                           .OrderBy(product => product.Name)
                            .Skip((parameters.PageInfo.PageNumber - 1) * parameters.PageInfo.PageSize)
-                           .Take(parameters.PageInfo.PageSize)
-                           .ToListAsync(cancellationToken)
-                       ?? throw new ProductNotFoundException();
+                           .Take(parameters.PageInfo.PageSize);
+
+        var productsRes = parameters.Sorting switch
+        {
+            TypeProductSorting.No => await products.ToListAsync(cancellationToken),
+            TypeProductSorting.AscName => await products.OrderBy(product => product.Name).ToListAsync(cancellationToken),
+            TypeProductSorting.DescName => await products.OrderByDescending(product => product.Name).ToListAsync(cancellationToken),
+            _ => throw new BadRequestException()
+        };
 
         var productsDto = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductDto>>(products);
 

@@ -28,7 +28,7 @@ public sealed class PostgresDbContext : IdentityDbContext<User, Role, Guid>
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql(_configuration.GetSection("PostgresSql:ConnectionString").Value);
+        optionsBuilder.UseNpgsql(_configuration.GetSection("PostgresSql:ConnectionStringForLocal").Value);
     }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
