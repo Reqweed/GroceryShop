@@ -41,7 +41,7 @@ public class ProductService : IProductService
             _ => throw new BadRequestException()
         };
 
-        var productsDto = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductDto>>(products);
+        var productsDto = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductDto>>(productsRes);
 
         return productsDto;
     }
