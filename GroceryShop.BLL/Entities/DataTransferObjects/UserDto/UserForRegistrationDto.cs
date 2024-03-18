@@ -10,7 +10,7 @@ public record UserForRegistrationDto
     [Required]
     [EmailAddress]
     public string Email { get; init; }
-    [MaxLength(13), MinLength(13)]
+    [RegularExpression(@"^\d{12,13}", ErrorMessage = "Invalid phone number format")]
     public string? PhoneNumber { get; init; } = null;
     [Required]
     [MinLength(4)]

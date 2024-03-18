@@ -22,7 +22,6 @@ public sealed class PostgresDbContext : IdentityDbContext<User, Role, Guid>
     public PostgresDbContext(IConfiguration configuration)
     {
         _configuration = configuration;
-        Database.Migrate();
     }
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

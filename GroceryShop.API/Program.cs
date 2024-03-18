@@ -1,5 +1,7 @@
 using GroceryShop.API.Extensions;
 using GroceryShop.API.Middlewares;
+using GroceryShop.DAL.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,5 +26,16 @@ app.MapControllers();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    var context = services.GetRequiredService<PostgresDbContext>();
+    if (context.Database.GetPendingMigrations().Any())
+    {
+        context.Database.Migrate();
+    }
+}
 
 app.Run();

@@ -22,7 +22,7 @@ public class ProductService : IProductService
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<ProductDto>> GetAllAsync(GetAllParametersDto parameters, CancellationToken cancellationToken)
+    public async Task<ProductForCatalogDto> GetAllAsync(GetAllParametersDto parameters, CancellationToken cancellationToken)
     {
         if (parameters is null)
             throw new NullDtoBadRequestException();
@@ -43,7 +43,11 @@ public class ProductService : IProductService
 
         var productsDto = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductDto>>(productsRes);
 
-        return productsDto;
+        return new ProductForCatalogDto
+        {
+            Products = productsDto,
+            Parameters = parameters
+        };
     }
 
     public async Task<ProductDto> GetAsync(Guid idProduct, CancellationToken cancellationToken)

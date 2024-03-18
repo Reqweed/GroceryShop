@@ -5,7 +5,7 @@ namespace GroceryShop.BLL.Interfaces;
 
 public interface IProductService
 {
-    Task<IEnumerable<ProductDto>> GetAllAsync(GetAllParametersDto parameters, CancellationToken cancellationToken);
+    Task<ProductForCatalogDto> GetAllAsync(GetAllParametersDto parameters, CancellationToken cancellationToken);
     Task<ProductDto> GetAsync(Guid idProduct, CancellationToken cancellationToken);
     Task<ProductDto> GetWithCategoryAndSupplierAsync(Guid idProduct, CancellationToken cancellationToken);
     Task CreateAsync(ProductForCreatingDto productDto);
