@@ -28,24 +28,28 @@ public static class ServiceExtensions
 
     public static void ConfigureMiddlewares(this IServiceCollection services) =>
         services.AddTransient<ExceptionMiddleware>();
-    
+
     public static void ConfigureDbContext(this IServiceCollection services) =>
         services.AddDbContext<PostgresDbContext>();
-    
+
     public static void ConfigureRepositoryManager(this IServiceCollection services) =>
-            services.AddScoped<IRepositoryManager, RepositoryManager>();
-    
+        services.AddScoped<IRepositoryManager, RepositoryManager>();
+
     public static void ConfigureMapper(this IServiceCollection services) =>
         services.AddAutoMapper(typeof(GroceryShop.BLL.MappingProfiles.MappingProfile));
-    
+
     public static void ConfigureServiceManager(this IServiceCollection services) =>
         services.AddScoped<IServiceManager, ServiceManager>();
 
     public static void ConfigureAuth(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<IJwtService, JwtService>();
-        
-        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+
+        services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
             .AddJwtBearer(options =>
             {
                 options.SaveToken = true;
@@ -56,18 +60,13 @@ public static class ServiceExtensions
                     ValidateAudience = true,
                     ValidateIssuer = true,
                     ValidateLifetime = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.GetSection("JWT:Key").Value)),
+                    IssuerSigningKey =
+                        new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.GetSection("JWT:Key").Value)),
                     ValidIssuer = configuration["JWT:Issuer"],
                     ValidAudience = configuration["JWT:Audience"]
                 };
             });
-        
-        services.AddAuthentication(options =>
-        {
-            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        });
-        
+
         services.AddIdentity<User, Role>(options =>
             {
                 options.Password.RequireDigit = false;
@@ -78,7 +77,7 @@ public static class ServiceExtensions
                 options.User.RequireUniqueEmail = true;
                 options.SignIn.RequireConfirmedEmail = false;
             }).AddEntityFrameworkStores<PostgresDbContext>()
-            .AddDefaultTokenProviders();;
+            .AddDefaultTokenProviders();
     }
 
     public static void ConfigureSwagger(this IServiceCollection services)
