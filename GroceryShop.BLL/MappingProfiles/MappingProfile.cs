@@ -16,7 +16,7 @@ public class MappingProfile : Profile
     {
         CreateMap<Category, CategoryDto>();
         CreateMap<CategoryForCreatingDto, Category>();
-        CreateProjection<CategoryForUpdatingDto, Category>();
+        CreateMap<CategoryForUpdatingDto, Category>();
         
         CreateMap<Order,OrderDto>();
         CreateMap<OrderForCreatingDto, Order>();
